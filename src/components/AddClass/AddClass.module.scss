@@ -1,0 +1,20 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+  row-gap: 1.2rem;
+}
+.addClass {
+  width: 20.5rem;
+}
+.classFees {
+  width: 20.5rem;
+}
+.password {
+  width: 20.5rem;
+}
+.login-heading {
+  margin-bottom: -0.1rem;
+}

@@ -1,24 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Login from "./components/Login/Login";
+import Signup from "./components/Signup/Signup";
+import Dashboard from "./components/Dashboard/Dashboard";
+import Unauthorized from "./pages/Unauthorized/Unauthorized";
+import NotFound from "./components/NotFound/NotFound";
+import AddStudent from "./components/AddStudent/AddStudent";
+import AddClass from "./components/AddClass/AddClass";
+import GenerateChallan from "./components/GenerateChallan/GenerateChallan";
+import DisplayChallan from "./components/DisplayChallan/DisplayChallan";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/dashboard/add-student" element={<AddStudent />} />
+          <Route path="/dashboard/add-class" element={<AddClass />} />
+          <Route
+            path="/dashboard/generate-challan"
+            element={<GenerateChallan />}
+          />
+          <Route
+            path="/dashboard/display-challan"
+            element={<DisplayChallan />}
+          />
+          <Route path="/unauthorized" element={<Unauthorized />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </BrowserRouter>
+    </>
   );
 }
 

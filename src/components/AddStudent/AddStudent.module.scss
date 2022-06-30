@@ -1,0 +1,32 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+  row-gap: 1.2rem;
+}
+.firstName {
+  width: 20.5rem;
+}
+.lastName {
+  width: 20.5rem;
+}
+.add-student-heading {
+  margin-bottom: -0.1rem;
+}
+.new-account {
+  margin-top: -0.1rem;
+}
+.new-account-link {
+  text-decoration: none;
+  color: black;
+}
+.save-btn {
+  position: relative;
+  bottom: 4%;
+}
+.btn-wrapper {
+  position: relative;
+  bottom: 3.5%;
+}

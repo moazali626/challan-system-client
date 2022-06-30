@@ -1,0 +1,16 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+}
+.img {
+  width: 360px;
+}
+.no-data-text {
+  font-size: 1.4rem;
+}
+.no-data-back-btn {
+  text-decoration: none;
+}

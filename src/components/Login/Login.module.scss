@@ -1,0 +1,24 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+  row-gap: 1.2rem;
+}
+.email {
+  width: 20.5rem;
+}
+.password {
+  width: 20.5rem;
+}
+.login-heading {
+  margin-bottom: -0.1rem;
+}
+.new-account {
+  margin-top: -0.1rem;
+}
+.new-account-link {
+  text-decoration: none;
+  color: black;
+}
