@@ -12,11 +12,8 @@ const NoDataFound = () => {
         alt="No data found"
         className={NoDataFoundCSS.img}
       />
-      <p className={NoDataFoundCSS["no-data-text"]}>No student record exists</p>
-      <Link
-        to="/dashboard/generate-challan"
-        className={NoDataFoundCSS["no-data-back-btn"]}
-      >
+      <p className={NoDataFoundCSS["no-data-text"]}>No record exists</p>
+      <Link to="/dashboard" className={NoDataFoundCSS["no-data-back-btn"]}>
         <Button variant="outlined" color="secondary">
           Go Back
         </Button>

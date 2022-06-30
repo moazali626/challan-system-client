@@ -10,6 +10,7 @@ const storedToken = localStorage.getItem("token");
 
 const GenerateChallan = () => {
   const [className, setClassName] = useState();
+  const [isChallanGenerated, setIsChallanGenerated] = useState();
 
   useEffect(() => {
     const isAuth = async () => {
@@ -26,6 +27,20 @@ const GenerateChallan = () => {
 
   const getClassName = (data) => {
     setClassName(data);
+  };
+
+  const generateHandler = async () => {
+    //generate challans
+    const result = await axios.post("http://localhost:4000/generate-challan", {
+      className,
+    });
+    // console.log(result.data.length);
+    if (result.data.length === 0) {
+      window.location = "/no-data-found";
+    }
+    if (result.data) {
+      setIsChallanGenerated(true);
+    }
   };
 
   return (
@@ -49,15 +64,17 @@ const GenerateChallan = () => {
         ) : null} */}
 
         <div>
-          <Link
-            to="/dashboard/display-challan"
-            style={{ textDecoration: "none" }}
-            state={{ data: className }}
-          >
-            <Button color="primary" variant="outlined" type="submit">
-              Generate
-            </Button>
-          </Link>
+          <div>
+            {isChallanGenerated && (
+              <p style={{ marginTop: "-1rem", color: "green" }}>
+                Challans has been generated successfully
+              </p>
+            )}
+          </div>
+
+          <Button color="primary" variant="outlined" onClick={generateHandler}>
+            Generate
+          </Button>
           <Link to="/dashboard" style={{ textDecoration: "none" }}>
             <Button
               color="secondary"

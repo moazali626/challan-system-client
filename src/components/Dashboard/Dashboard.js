@@ -54,6 +54,14 @@ const Dashboard = () => {
             Generate Challan
           </Button>
         </Link>
+        <Link
+          to="/dashboard/display-challan"
+          style={{ textDecoration: "none" }}
+        >
+          <Button variant="outlined" color="primary">
+            View Challan
+          </Button>
+        </Link>
         <Button variant="outlined" color="secondary" onClick={logoutHandler}>
           Logout
         </Button>
