@@ -34,7 +34,7 @@ const AddStudent = () => {
       const result = await axios.post("http://localhost:4000/dashboard", {
         storedToken,
       });
-
+      console.log(result);
       if (result.data.error) {
         window.location = "/unauthorized";
       }
@@ -63,13 +63,17 @@ const AddStudent = () => {
         const { firstName, lastName } = values;
         // console.log(firstName, lastName);
         // console.log(className, mode);
-        const result = await axios.post("http://localhost:4000/add-student", {
-          firstName,
-          lastName,
-          className,
-          mode,
-        });
-        if (result.status === 200) {
+        const result = await axios.post(
+          "http://localhost:4000/api/student/add-student",
+          {
+            firstName,
+            lastName,
+            className,
+            mode,
+          }
+        );
+        console.log(result);
+        if (result.data.code === 200) {
           setSuccess(true);
           //   window.location.reload();
           //   values.firstName = "";

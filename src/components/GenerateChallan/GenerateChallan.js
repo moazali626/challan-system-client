@@ -31,10 +31,13 @@ const GenerateChallan = () => {
 
   const generateHandler = async () => {
     //generate challans
-    const result = await axios.post("http://localhost:4000/generate-challan", {
-      className,
-    });
-    // console.log(result.data.length);
+    const result = await axios.post(
+      "http://localhost:4000/api/challan/generate-challan",
+      {
+        className,
+      }
+    );
+    console.log(result.data);
     if (result.data.length === 0) {
       window.location = "/no-data-found";
     }

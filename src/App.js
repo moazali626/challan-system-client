@@ -10,6 +10,7 @@ import AddClass from "./components/AddClass/AddClass";
 import GenerateChallan from "./components/GenerateChallan/GenerateChallan";
 import DisplayChallan from "./components/DisplayChallan/DisplayChallan";
 import NoDataFound from "./pages/NoDataFound/NoDataFound";
+import UpdateStatus from "./components/UpdateStatus/UpdateStatus";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
             path="/dashboard/display-challan"
             element={<DisplayChallan />}
           />
+          <Route path="/dashboard/update-status" element={<UpdateStatus />} />
           <Route path="/no-data-found" element={<NoDataFound />} />
           <Route path="/unauthorized" element={<Unauthorized />} />
           <Route path="*" element={<NotFound />} />

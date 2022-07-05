@@ -62,6 +62,11 @@ const Dashboard = () => {
             View Challan
           </Button>
         </Link>
+        <Link to="/dashboard/update-status" style={{ textDecoration: "none" }}>
+          <Button variant="outlined" color="primary">
+            Update Challan Status
+          </Button>
+        </Link>
         <Button variant="outlined" color="secondary" onClick={logoutHandler}>
           Logout
         </Button>

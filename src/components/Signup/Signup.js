@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import Button from "@material-ui/core/Button";
@@ -25,6 +25,8 @@ const validationSchema = yup.object({
 });
 
 const Signup = () => {
+  const [duplicateError, setDuplicateError] = useState();
+
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -34,18 +36,20 @@ const Signup = () => {
     validationSchema: validationSchema,
     onSubmit: async (values) => {
       const { name, email, password } = values;
-      console.log("flag0");
-      const result = await axios.post("http://localhost:4000/signup", {
+
+      const result = await axios.post("http://localhost:4000/api/auth/signup", {
         name,
         email,
         password,
       });
 
-      const token = result.data.user.token;
-      localStorage.setItem("token", token);
-
-      //   <Redirect to="/dashboard" />;
-      window.location = "/dashboard";
+      if (result.data.code === 200) {
+        const token = result.data.token;
+        localStorage.setItem("token", token);
+        window.location = "/dashboard";
+      } else if (result.data.code === 409) {
+        setDuplicateError(true);
+      }
     },
   });
 
@@ -88,19 +92,35 @@ const Signup = () => {
           helperText={formik.touched.password && formik.errors.password}
         />
         <div>
-          <Button color="primary" variant="contained" type="submit">
-            Register
-          </Button>
-          <Link to="/" style={{ textDecoration: "none" }}>
-            <Button
-              color="secondary"
-              variant="contained"
-              type="submit"
-              style={{ marginLeft: "1rem" }}
-            >
-              Go back
+          <div>
+            {duplicateError ? (
+              <p
+                style={{
+                  marginTop: "-0.5rem",
+                  marginBottom: "-0.5rem",
+                  color: "red",
+                  textAlign: "center",
+                }}
+              >
+                User account already exists
+              </p>
+            ) : null}
+          </div>
+          <div className={SignupCSS["btn"]}>
+            <Button color="primary" variant="contained" type="submit">
+              Register
             </Button>
-          </Link>
+            <Link to="/" style={{ textDecoration: "none" }}>
+              <Button
+                color="secondary"
+                variant="contained"
+                type="submit"
+                style={{ marginLeft: "1rem" }}
+              >
+                Go back
+              </Button>
+            </Link>
+          </div>
         </div>
       </form>
     </div>

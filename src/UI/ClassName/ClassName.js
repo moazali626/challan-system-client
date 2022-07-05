@@ -14,8 +14,10 @@ const ClassName = (props) => {
 
   useEffect(() => {
     const getClassName = async () => {
-      const result = await axios.get("http://localhost:4000/get-class-name");
-      setAllClasses(result.data);
+      const result = await axios.get(
+        "http://localhost:4000/api/class/get-class-name"
+      );
+      setAllClasses(result.data.classes);
     };
     getClassName();
   }, []);

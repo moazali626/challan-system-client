@@ -30,24 +30,25 @@ const Login = () => {
     onSubmit: (values) => {
       const login = async () => {
         const { email, password } = values;
-        const result = await axios.post("http://localhost:4000/login", {
-          email,
-          password,
-        });
+        const result = await axios.post(
+          "http://localhost:4000/api/auth/login",
+          {
+            email,
+            password,
+          }
+        );
 
-        if (
-          result.data.error === "no_user_found" ||
-          result.data.error === "invalid_details"
-        ) {
+        console.log(result);
+
+        if (result.data.code === 404 || result.data.code === 401) {
           setLoginError(true);
           values.email = "";
           values.password = "";
+          return;
         }
 
-        if (result.data._id) {
-          localStorage.setItem("token", result.data.token);
-          window.location = "/dashboard";
-        }
+        localStorage.setItem("token", result.data.token);
+        window.location = "/dashboard";
       };
       login();
     },

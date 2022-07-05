@@ -12,8 +12,11 @@ const GenerateChallanClass = (props) => {
 
   useEffect(() => {
     const getClassNames = async () => {
-      const result = await axios.get("http://localhost:4000/get-class-name");
-      setAllClasses(result.data);
+      const result = await axios.get(
+        "http://localhost:4000/api/class/get-class-name"
+      );
+      console.log(result.data.classes);
+      setAllClasses(result.data.classes);
     };
     getClassNames();
   }, []);

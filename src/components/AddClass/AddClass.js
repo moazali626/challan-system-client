@@ -54,14 +54,14 @@ const AddClass = () => {
 
       const addNewClass = async () => {
         const result = await await axios.post(
-          "http://localhost:4000/add-class",
+          "http://localhost:4000/api/class/add-class",
           {
             addClass,
             classFees,
           }
         );
-
-        if (result.data.error) {
+        console.log(result);
+        if (result.data.code !== 200) {
           setIsDataSaved(false);
           setDuplicateError(true);
           values.addClass = "";
