@@ -5,8 +5,23 @@ import axios from "axios";
 import { Button } from "@material-ui/core";
 import NoDataFound from "../../pages/NoDataFound/NoDataFound";
 
+const storedToken = localStorage.getItem("token");
+
 const DisplayChallan = () => {
   const [challanData, setChallanData] = useState();
+
+  useEffect(() => {
+    const isAuth = async () => {
+      const result = await axios.post("http://localhost:4000/dashboard", {
+        storedToken,
+      });
+
+      if (result.data.error) {
+        window.location = "/unauthorized";
+      }
+    };
+    isAuth();
+  }, []);
 
   useEffect(() => {
     const generateChallan = async () => {

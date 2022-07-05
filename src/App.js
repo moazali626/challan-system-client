@@ -26,6 +26,7 @@ function App() {
             path="/dashboard/generate-challan"
             element={<GenerateChallan />}
           />
+          {/*  */}
           <Route
             path="/dashboard/display-challan"
             element={<DisplayChallan />}

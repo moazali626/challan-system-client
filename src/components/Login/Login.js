@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import Button from "@material-ui/core/Button";
@@ -6,6 +6,8 @@ import TextField from "@material-ui/core/TextField";
 import LoginCSS from "./Login.module.scss";
 import { Link } from "react-router-dom";
 import axios from "axios";
+
+const isToken = localStorage.getItem("token");
 
 const validationSchema = yup.object({
   email: yup
@@ -20,6 +22,12 @@ const validationSchema = yup.object({
 
 const Login = () => {
   const [loginError, setLoginError] = useState();
+
+  useEffect(() => {
+    if (isToken) {
+      window.location = "/dashboard";
+    }
+  }, []);
 
   const formik = useFormik({
     initialValues: {
